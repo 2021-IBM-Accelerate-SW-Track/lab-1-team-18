@@ -6,7 +6,12 @@ export class EnterListItem extends Component {
         return (
             <center>
                 <form noValidate autoComplete="off">
-                    <TextField label="Add Task Here" width=""/>
+                    <TextField data-testid="new-item-input"
+                        label="Add Task Here"
+                        color="primary"
+                        variant="outlined"
+                        style={{ width: '35%' }}
+                    />
                 </form>
             </center>
         )
