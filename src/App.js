@@ -1,10 +1,13 @@
-import Header from "./component/header"
+import Header from './component/header';
 import './App.css';
+import { EnterListItem } from './component/header/enterListItem';
+import React from "react";
 
-function App() {
-  return (
-    <div className="App">
-    <Header/>
+function App(){
+  return(
+    <div className="container">
+      <Header/>
+      <EnterListItem/>
     </div>
   );
 }
