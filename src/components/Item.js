@@ -1,73 +1,63 @@
-import './App.css';
-import Box from '@material-ui/core/Box';
+import React from 'react'
+import CheckBox from '@material-ui/core/CheckBox'
 import { Typography } from '@material-ui/core'
-import AddItem from './components/AddItem'
-import { useState } from 'react';
-import ItemsList from './components/ItemsList';
+import { useState } from 'react'
+import { Box } from '@material-ui/core'
+import DeleteIcon from '@material-ui/icons/Delete'
+import { IconButton } from '@material-ui/core'
 
-function App() {
-
-  // The useState function is used to store and update data
-  // const [data, functionToUpdateData] = useState(initialData)
-  const [items, setItems] = useState([
-    {
-      id: 1,
-      text: "get the groceries",
-      time: "2021-16-6 19:59:PM"
-    }
-  ])
-
-
-  // The addItem function will be passed to itemList (the UI for displaying the items) as a prop
-  const addItem = (textAndTime) => {
-    // the textAndTime parameter passed into this function is actually an object in this format: {text:"Mow the lawn", time:"2021-16-6 19:59:PM"}
-
-    // create a new ID with length of items + 1
-    const id = items.length + 1
+// The Item takes in item, which is an object of the form {id, text, time} and the deleteItem function
+const Item = ({item, deleteItem}) => {
     
-    // ...textAndTime passes each attribute in textAndTime to newItem
-    // {id, ...textAndTime} = {id, textAndTime.text, textAndTime.time}
-    const newItem = {id, ...textAndTime}
+    // checked is true or false, depending on whether the checkbox is checked or not
+    // setChecked is used to update the value of checked after the checkbox is clicked
+    const [checked, setChecked] = useState(false);
 
-    // since newItem cannot be directly appended to the list of items, the setItems function from line 12 is called to update the list of items
-    setItems([...items, newItem])
-  }
+    // This block of code is used to update the text content of an item. Still trying to figure this out
+    const updateItem = (e) => {
+        if (e.target.type === 'checkbox') {
+            return
+        }
+        alert('Updating list item...')
+    }
 
+    return (
+        // Box with styles for the frontend to update
+        <Box 
+        display="flex"
+        width="400px"
+        border={2}
+        borderRadius={5}
+        justifyContent="center"
+        my={0.5}
+        onDoubleClick={updateItem}
+        bgcolor = {checked ? "#bfbdbd": "white"}
+        >
+            {/* checkbox for marking the task as complete
+                the onChange event listener on line 40 listens for a click event on the checkbox and calls the setChecked function from line 13 */}
+            <CheckBox
+            checked={checked}
+            onChange={(e) =>setChecked(e.target.checked)}
+            color="primary"
+            inputProps={{'aria-label':'secondary checkbox'}}
+            />
 
-  // The deleteItem function will be passed to itemList as a prop
-  const deleteItem = (id) => {
-    // the id parameter passed here is the id of the object(item) to be deleted
+            {/* This box displays the text and the time it was created */}
+            <Box style={{flex:'10px 1 1'}}>
+                <Typography style={{wordWrap:'break-word'}}>
+                    {item.text}
+                </Typography>
+                <Typography variant="caption" color="secondary">
+                    {item.time}
+                </Typography>
+            </Box>
 
-    // filter is a javascript function that filters the elements of a list based on a particular attribute
-    setItems(items.filter((item)=>item.id !== id))
-  }
-
-  return (
-    <div className="App">
-
-
-      {/* The box component houses the entire UI of the app. https://material-ui.com/components/box/#box */}
-      <Box display="flex" flexDirection="column" border={2} width={600} alignItems="center" my={4} py={4} borderRadius={10}>
-
-        <header>
-          {/* https://material-ui.com/components/typography/#typography */}
-          <Typography variant="h4">
-            To-do List
-          </Typography>
-        </header>
-
-        {/* The AddItem component is displayed after the header. This component is created in src/components/AddItem.js 
-         It takes in the the list of items from line 12 and the addItem function from line 22 as props*/}
-        <AddItem items={items} addItem={addItem}/>
-
-
-        {/* The ItemsList component is displayed after the AddItem component. This component is created in src/components/ItemsList.js 
-            It takes in the the list of items from line 12 and the deleteItem function from line 38 as props
-        */}
-        <ItemsList items={items} deleteItem={deleteItem}/>
-      </Box>
-    </div>
-  );
+            {/* The delete button has an onClick event listener that calls the deleteItem function*/}
+            <IconButton aria-label="delete" onClick={()=>deleteItem(item.id)}>
+                <DeleteIcon color="error"/>
+            </IconButton>
+        </Box>
+    )
 }
 
-export default App;
+export default Item
