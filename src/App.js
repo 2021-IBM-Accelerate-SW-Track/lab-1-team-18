@@ -1,20 +1,3 @@
-// import Header from './component/header';
-// import './App.css';
-// import { EnterListItem } from './component/enterListItem';
-// import React from "react";
-
-// function App(){
-//   return(
-//     <div className="container">
-//       <Header/>
-//       <EnterListItem/>
-//     </div>
-//   );
-// }
-
-// export default App;
-
-
 import './App.css';
 import Box from '@material-ui/core/Box';
 import { Typography } from '@material-ui/core'
