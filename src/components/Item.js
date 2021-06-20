@@ -4,9 +4,10 @@ import { Typography, Grid, Box } from '@material-ui/core'
 import { useState } from 'react'
 import DeleteIcon from '@material-ui/icons/DeleteOutlined'
 import { IconButton } from '@material-ui/core'
+import ItemText from './ItemText'
 
 // The Item takes in item, which is an object of the form {id, text, time} and the deleteItem function
-const Item = ({item, deleteItem}) => {
+const Item = ({item, deleteItem, editItem}) => {
     
     // checked is true or false, depending on whether the checkbox is checked or not
     // setChecked is used to update the value of checked after the checkbox is clicked
@@ -59,10 +60,14 @@ const Item = ({item, deleteItem}) => {
         <div style={{color:"white", backgroundColor:"black", borderRadius:"5px", width:"425px", marginBottom:"10px"}}>
             <Grid container>
                 <Grid item xs={2}>
-                    <Checkbox style={{color:"white"}}></Checkbox>
+                    <Checkbox 
+                    style={{color:"white"}}
+                    checked={checked}
+                    onChange={(e) =>setChecked(e.target.checked)}
+                    />
                 </Grid>
                 <Grid item container xs={8}>
-                    <Grid item xs={12} style={{textAlign:"left"}}><Typography variant="body1">{item.text}</Typography></Grid>
+                    <Grid item xs={12} style={{textAlign:"left"}}><Typography variant="body1" style={{color:"white"}}><ItemText item={item} editItem={editItem}/></Typography></Grid>
                     <Grid item xs={12} style={{textAlign:"left"}}><Typography variant="body2" style={{color:"grey"}}>{item.time}</Typography></Grid>
                 </Grid>
                 <Grid item xs={2}>

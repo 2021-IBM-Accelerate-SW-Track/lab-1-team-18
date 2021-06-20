@@ -42,6 +42,10 @@ function App() {
     setItems(items.filter((item)=>item.id !== id))
   }
 
+  const editItem = (id, text) => {
+    items.find(item => item.id === id).text = text;
+  }
+
   return (
     <div className="App">
 
@@ -64,7 +68,7 @@ function App() {
         {/* The ItemsList component is displayed after the AddItem component. This component is created in src/components/ItemsList.js 
             It takes in the the list of items from line 12 and the deleteItem function from line 38 as props
         */}
-        <ItemsList items={items} deleteItem={deleteItem}/>
+        <ItemsList items={items} deleteItem={deleteItem} editItem={editItem}/>
       </Box>
     </div>
   );
