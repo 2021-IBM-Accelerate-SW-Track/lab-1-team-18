@@ -1,4 +1,5 @@
 import { useState } from "react"
+import "./AddItem.css"
 
 
 // The AddItem component takes in the list of items from App.js and the addItem function as props
@@ -45,14 +46,14 @@ const AddItem = ({addItem, items}) => {
     }
 
     return (
-        <div my={2}>
+        <div className="formContainer">
             {/* This form contains the input field and a submit button
                 In react, forms have an onSubmit event listener that listens for when the form is submitted, and then calls a specific function
                 In this case, it calls the onSubmit function that was defined on line 11
             */}
             <form className="form-control" onSubmit={onSubmit}>
-                <button type="submit"><i class="fas fa-plus-square"></i></button>
-                <input type="text" value={text} onChange={(e)=>setText(e.target.value)}/>
+                <button type="submit" className="addIcon"><i className="fas fa-plus-square"></i></button>
+                <input type="text" value={text} className="inputField" onChange={(e)=>setText(e.target.value)} placeholder={"Enter todo item here"}/>
             </form>
         </div>
     )
