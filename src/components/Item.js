@@ -1,6 +1,6 @@
 import React from 'react'
 import Checkbox from '@material-ui/core/Checkbox'
-import { Typography, Grid, Box } from '@material-ui/core'
+import { Typography, Grid } from '@material-ui/core'
 import { useState } from 'react'
 import DeleteIcon from '@material-ui/icons/DeleteOutlined'
 import { IconButton } from '@material-ui/core'
@@ -67,7 +67,7 @@ const Item = ({item, deleteItem, editItem}) => {
                     />
                 </Grid>
                 <Grid item container xs={8}>
-                    <Grid item xs={12} style={{textAlign:"left"}}><Typography variant="body1" style={{color:"white"}}><ItemText item={item} editItem={editItem}/></Typography></Grid>
+                    <Grid item xs={12} style={{textAlign:"left"}}><Typography component={"span"} variant="body1" style={{color:"white"}}><ItemText item={item} editItem={editItem}/></Typography></Grid>
                     <Grid item xs={12} style={{textAlign:"left"}}><Typography variant="body2" style={{color:"grey"}}>{item.time}</Typography></Grid>
                 </Grid>
                 <Grid item xs={2}>

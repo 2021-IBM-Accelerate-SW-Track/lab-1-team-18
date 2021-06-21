@@ -29,7 +29,9 @@ const ItemText = ({item, editItem}) => {
                     event.preventDefault();
                     event.stopPropagation();
                 }
-            }}/>
+            }}
+            autoFocus={true}
+            />
         );
     }
 }
