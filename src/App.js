@@ -51,7 +51,7 @@ function App() {
 
 
       {/* The box component houses the entire UI of the app. https://material-ui.com/components/box/#box */}
-      <Box display="flex" flexDirection="column" border={2} width={600} alignItems="center" my={4} py={4} borderRadius={10}>
+      <Box display="flex" flexDirection="column" border={2} width={1000} alignItems="center" m={5} py={4} borderRadius={10}>
 
         <header>
           {/* https://material-ui.com/components/typography/#typography */}

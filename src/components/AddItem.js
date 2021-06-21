@@ -35,7 +35,9 @@ const AddItem = ({addItem, items}) => {
         if (!duplicate){
             // creates new date object and use the date object to create a time string
             const date = new Date();
-            const time = `${date.getMonth()}-${date.getDate()}-${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`;
+            const signature = (date.getHours() > 11) ? "PM" : "AM";
+            const hours = (date.getHours() > 12) ? date.getHours() - 12 : date.getHours(); 
+            const time = `${date.getMonth()}-${date.getDate()}-${date.getFullYear()} ${hours}:${date.getMinutes()} ${signature}`;
 
             // calls the addItem function and pass in the object {text,time}
             addItem({text, time});

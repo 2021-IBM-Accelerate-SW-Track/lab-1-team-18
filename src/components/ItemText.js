@@ -8,7 +8,7 @@ const ItemText = ({item, editItem}) => {
 
     if (toggle){
         return(
-            <div onDoubleClick={() => {
+            <div style={{wordWrap:"break-word"}} onDoubleClick={() => {
                 setToggle(false);
             }}>
                 {text}
