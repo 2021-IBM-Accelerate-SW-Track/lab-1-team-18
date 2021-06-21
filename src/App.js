@@ -9,13 +9,7 @@ function App() {
 
   // The useState function is used to store and update data
   // const [data, functionToUpdateData] = useState(initialData)
-  const [items, setItems] = useState([
-    {
-      id: 1,
-      text: "get the groceries",
-      time: "2021-16-6 19:59:PM"
-    }
-  ])
+  const [items, setItems] = useState([]);
 
 
   // The addItem function will be passed to itemList (the UI for displaying the items) as a prop
@@ -55,7 +49,7 @@ function App() {
 
         <header>
           {/* https://material-ui.com/components/typography/#typography */}
-          <Typography variant="h4">
+          <Typography variant="h3" style={{fontWeight:525}}>
             To-do List
           </Typography>
         </header>

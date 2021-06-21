@@ -55,7 +55,7 @@ const AddItem = ({addItem, items}) => {
             */}
             <form className="form-control" onSubmit={onSubmit}>
                 <button data-testid="new-item-button" type="submit" className="addIcon"><i className="fas fa-plus-square"></i></button>
-                <input data-testid="new-item-input" type="text" value={text} className="inputField" onChange={(e)=>setText(e.target.value)} placeholder={"Enter todo item here"}/>
+                <input data-testid="new-item-input" type="text" value={text} className="inputField" onChange={(e)=>setText(e.target.value)} placeholder={"Enter to-do item here"}/>
             </form>
         </div>
     )

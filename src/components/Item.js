@@ -11,33 +11,41 @@ const Item = ({item, deleteItem, editItem}) => {
     
     // checked is true or false, depending on whether the checkbox is checked or not
     // setChecked is used to update the value of checked after the checkbox is clicked
+    const primary = "#16ffbd";
+    const secondary = "black";
     const [checked, setChecked] = useState(false);
+    const [bgColor, setbgColor] = useState(secondary);
+    const [textColor, setTextColor] = useState(primary);
 
-    // This block of code is used to update the text content of an item. Still trying to figure this out
-    const updateItem = (e) => {
-        if (e.target.type === 'checkbox') {
-            return
+    const handleCheck = (e) => {
+        if (!checked){
+            setbgColor(primary);
+            setTextColor(secondary);
         }
-        alert('Updating list item...')
+        else {
+            setbgColor(secondary);
+            setTextColor(primary);
+        }
+        setChecked(e.target.checked);
     }
 
     return (
-        <div style={{color:"white", backgroundColor:"black", borderRadius:"5px", width:"700px", margin:"10px 5px"}}>
+        <div style={{color:"white", backgroundColor: bgColor, border:"2px solid black" , borderRadius:"5px", width:"700px", margin:"10px 5px", boxShadow:"5px 5px rgba(0, 0, 0, .6)"}}>
             <Grid container wrap="wrap">
                 <Grid item xs={2} sm={1}>
                     <Checkbox 
-                    style={{color:"white"}}
+                    style={{color:textColor}}
                     checked={checked}
-                    onChange={(e) =>setChecked(e.target.checked)}
+                    onChange={(e) => handleCheck(e)}
                     />
                 </Grid>
                 <Grid item container xs={8} sm={10}>
-                    <Grid item xs={12} style={{textAlign:"left"}}><Typography display="inline" component={"span"} variant="h6" style={{color:"white"}}><ItemText item={item} editItem={editItem}/></Typography></Grid>
+                    <Grid item xs={12} style={{textAlign:"left"}}><Typography display="inline" component={"span"} variant="h6" style={{color:textColor}}><ItemText item={item} editItem={editItem}/></Typography></Grid>
                     <Grid item xs={12} style={{textAlign:"left"}}><Typography variant="body2" style={{color:"grey"}}>{item.time}</Typography></Grid>
                 </Grid>
                 <Grid item xs={2} sm={1}>
                     <IconButton aria-label="delete" onClick={()=>deleteItem(item.id)}>
-                        <DeleteIcon variant="outlined" style={{color:"white"}}></DeleteIcon>
+                        <DeleteIcon variant="outlined" style={{color:textColor}}></DeleteIcon>
                     </IconButton>
                 </Grid>
             </Grid>

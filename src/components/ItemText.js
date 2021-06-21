@@ -1,5 +1,4 @@
 import {React, useState} from 'react'
-import { Typography, Grid } from '@material-ui/core'
 
 const ItemText = ({item, editItem}) => {
 
@@ -19,6 +18,7 @@ const ItemText = ({item, editItem}) => {
         return (
             <input type='text'
             value={text}
+            style={{height:"23px", fontSize:"20px", backgroundColor:"black", color:"#16ffbd"}}
             onChange={(event) => {
                 setText(event.target.value);
                 editItem(item.id, event.target.value);
